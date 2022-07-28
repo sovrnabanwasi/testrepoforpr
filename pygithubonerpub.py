@@ -20,10 +20,10 @@ def main():
     
     pull_url = 'https://api.github.com/repos/{orgname}/{reponame}/pulls?state=all'
     username = 'sovrnabanwasi'
-    orgname = 'sovrnabanwasi'
-    token = 'xxx'
+    orgname = 'sovrn'
+    token = 'xxxx'
     repos = ['testrepoforpr', 'viglink']
-    closedate = '2022-07-01'
+    pulldate = '2022-07-01'
 
     # from https://github.com/user/settings/tokens
     # repos_url = 'https://api.github.com/orgs/sovrn/repos?per_page=100&page=1'
@@ -42,7 +42,7 @@ def main():
         if resp.status_code == 200:
             pulls = json.loads(resp.text)
             newpulls = []
-            newpulls = list(filter(lambda d: d['created_at'] >= '2022-07-01', pulls))
+            newpulls = list(filter(lambda d: d['created_at'] >= pulldate, pulls))
 
             if len(newpulls) > 0:
                 for item in newpulls:
