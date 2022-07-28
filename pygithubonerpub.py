@@ -11,11 +11,13 @@ username = 'sovrnabanwasi'
 
 # from https://github.com/user/settings/tokens
 token = ''
-token = 'xxxx'
+token = 'xxx'
 repo = 'testrepoforpr'
 
 repos_url = 'https://api.github.com/orgs/sovrn/repos?per_page=100&page=1'
 pull_url = 'https://api.github.com/repos/sovrn/{reponame}/pulls?state=all'
+
+
 ##public url
 pull_url = 'https://api.github.com/repos/sovrnabanwasi/{reponame}/pulls?state=all'
 # create a re-usable session object with the user creds in-built
