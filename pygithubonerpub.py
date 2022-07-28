@@ -11,7 +11,7 @@ username = 'sovrnabanwasi'
 
 # from https://github.com/user/settings/tokens
 token = ''
-token = 'xxx'
+token = 'xxxxxx'
 repo = 'testrepoforpr'
 
 repos_url = 'https://api.github.com/orgs/sovrn/repos?per_page=100&page=1'
