@@ -14,9 +14,9 @@ https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating
 ## Usage:
 Before executing the python script, set the following parameters
 username = 'xxxx' {github username}
-orgname = 'sovrn' {organization}
-token = 'xxx' {token for the github username}
-repos = ['testrepoforpr', 'helloWorld'] {List of repos}
-pulldate = '2022-07-01' {Pull Date: Fetch pull requests that are open as of this date}
+orgname = 'sovrn' {organization}  
+token = 'xxx' {token for the github username}  
+repos = ['testrepoforpr', 'helloWorld'] {List of repos}  
+pulldate = '2022-07-01' {Pull Date: Fetch pull requests that are open as of this date}  
 
 At the unix command line :::: python3 testrepoforpr
