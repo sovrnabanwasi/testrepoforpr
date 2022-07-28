@@ -23,7 +23,7 @@ def main():
     pull_url = 'https://api.github.com/repos/{orgname}/{reponame}/pulls?state=all'
     username = 'sovrnabanwasi'
     orgname = 'sovrn'
-    token = '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'
+    token = 'xxx'
     repos = ['testrepoforpr', 'viglink']
     pulldate = '2022-07-01'
 
@@ -84,9 +84,6 @@ def main():
     
     df = pd.DataFrame(pull_req_list)
 
-    df_green  = pd.DataFrame()
-    df_yellow  = pd.DataFrame()
-    df_red  = pd.DataFrame()
 
     df_green  = df[df['merge_hours'] < 48]
     df_red  = df[df['merge_hours'] > 72 ]
