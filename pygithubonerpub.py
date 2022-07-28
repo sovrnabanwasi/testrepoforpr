@@ -2,7 +2,7 @@ import requests
 import json
 import pandas as pd
 import datetime as dt
-
+from termcolor import colored
 
 
 ####
@@ -15,13 +15,15 @@ import datetime as dt
 ####
 
 
+
+
 def main():
     pd.options.display.max_colwidth = 1000
     
     pull_url = 'https://api.github.com/repos/{orgname}/{reponame}/pulls?state=all'
     username = 'sovrnabanwasi'
     orgname = 'sovrn'
-    token = 'xxxx'
+    token = 'xxx'
     repos = ['testrepoforpr', 'viglink']
     pulldate = '2022-07-01'
 
@@ -50,7 +52,7 @@ def main():
                     ##print(item.keys())
                     merged = item['merged_at']
                     closed = item['closed_at']
-                    status = 'closed'
+                    status = 'merged'
                     if not merged:
                         merged = dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
                         status = 'open'
@@ -63,7 +65,7 @@ def main():
                     pull_req_dict['reponame'] = reponame
                     pull_req_dict['status'] = status
                     pull_req_dict['title'] = item['title']
-                    pull_req_dict['merge_time'] = merge_time
+                    pull_req_dict['merge_hours'] = merge_time.total_seconds()/3600
                     pull_req_list.append(pull_req_dict)
                     #if status == 'open':
                         #print("Open Pull Requests")
@@ -77,10 +79,19 @@ def main():
             pull_req_dict['reponame'] = reponame
             pull_req_dict['status'] = 'doesnotexist'
             pull_req_dict['title'] = ''
-            pull_req_dict['merge_time'] = ''
+            pull_req_dict['merge_hours'] = 0
             pull_req_list.append(pull_req_dict)
     
     df = pd.DataFrame(pull_req_list)
+
+
+    df_green  = df[df['merge_hours'] < 48]
+    df_red  = df[df['merge_hours'] > 72 ]
+    df_yellow  =  df[(df['merge_hours'] >= 99) & (df['merge_hours'] <= 101)]
+
+    print(colored(df_green, 'green'))
+    print(colored(df_yellow, 'yellow'))
+    print(colored(df_red, 'red'))
     
-    print(df)
+    
 main()
